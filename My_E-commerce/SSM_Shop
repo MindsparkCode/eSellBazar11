@@ -1,0 +1,1140 @@
+create table client(
+   id INT NOT NULL AUTO_INCREMENT,
+   name VARCHAR(50),
+  address VARCHAR(150),
+   PRIMARY KEY (id )
+);
+
+UPDATE client SET name= 'Learning JAVA' ,address='Reading JAVA' where id = 1;
+
+select * from client;
+delete from client where id =5;
+
+
+drop table register;
+
+
+create table register(
+   id INT NOT NULL AUTO_INCREMENT,
+   firstname VARCHAR(100) ,
+   lastname VARCHAR(100) ,
+   username VARCHAR(100) ,
+   email VARCHAR(100) NOT NULL UNIQUE,
+   phone VARCHAR(100),
+   dirth DATE,
+   location VARCHAR(250),
+   pass VARCHAR(100) NOT NULL,
+   PRIMARY KEY (id )
+);
+
+
+
+
+create table cart(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productname VARCHAR(50) ,
+   productcode varchar(50),
+   color VARCHAR(25) ,
+   size varchar(5),
+   unitprice int,
+   subtotalprice int,
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES register(id)
+);
+
+=================Table names=====================
+product,
+order,
+wishlist,
+users
+
+
+
+
+
+create table cart(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productname VARCHAR(50) ,
+   productcode varchar(50),
+   color VARCHAR(25) ,
+   size varchar(5),
+   quantity int,
+   unitprice int,
+   subtotalprice int,
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES register(id)
+);
+
+create table product(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productname VARCHAR(50) ,
+   productcode varchar(50),
+   color VARCHAR(25) ,
+   size varchar(5),
+   unitprice int,
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES register(id),
+      FOREIGN KEY (coustomerId) REFERENCES register(id)
+
+);
+
+insert into cart (
+coustomerId,productname,productcode,color,size,quantity,unitprice,subtotalprice)
+ values 
+ (1,"1","m001","Red","lg",5,50,0);
+ 
+ insert into cart (
+coustomerId,productname,productcode,color,size,quantity,unitprice,subtotalprice)
+ values 
+ (3,"2","m002","Black","sm",10,40,0);
+ 
+ insert into cart (
+coustomerId,productname,productcode,color,size,quantity,unitprice,subtotalprice)
+ values 
+ (2,"1","m003","green","m",7,45,0);
+ 
+  insert into cart (
+coustomerId,productname,productcode,color,size,quantity,unitprice,subtotalprice)
+ values 
+ (4,"2","m004","greay","m",3,30,0);
+ 
+ insert into register
+ (firstname,lastname,username,email,phone,dirth,location)
+ values 
+ ("Saiful","Alam","SAlam","abc@gmail.com","01712922516",CURDATE(),"Dhaka");
+
+
+insert into register
+ (firstname,lastname,username,email,phone,dirth,location)
+ values 
+ ("Saiful5","Alam5","SAlam5","abc@gmail.com5","01712922516",CURDATE(),"Dhaka5");
+
+ insert into register
+ (firstname,lastname,username,email,phone,dirth,location)
+ values 
+ ("Sadik","Ali","Sadek","sadek@gmail.com5","01712922516",CURDATE(),"Dhaka5");
+
+ 
+insert into register
+ (firstname,lastname,username,email,phone,dirth,location)
+ values 
+ ("Hasan","Ali","Hasan","Hasan@gmail.com5","01712922516",CURDATE(),"Dhaka5");
+
+
+
+
+
+==============================Project SSM Shop===============================
+table name
+------------------
+product,
+order,
+wishlist,
+users
+
+create database ssmshop;
+use ssmshop;
+
+
+
+
+
+
+drop table wishlist;
+drop table orders;
+drop table users;
+drop table products;
+drop table colors;
+drop table sizes;
+
+create table users
+         (id INT NOT NULL AUTO_INCREMENT,
+		 fistname varchar(25),
+		 lastname varchar(25),
+		 roles  varchar(15),
+		 email varchar(25),
+		 phone varchar(15),
+		 dirth date,
+		 district varchar(15),
+		 thana varchar(15),
+		 address varchar(150),
+		 password varchar(30),
+		  PRIMARY KEY (id)
+		 );
+		 
+insert into users(fistname,lastname,roles,email,phone,dirth,district,thana,address,password)
+            values("Saiful","Alam","admin","gmsaifulalam93@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+		 
+insert into users(fistname,lastname,roles,email,phone,dirth,district,thana,address,password)
+            values("Fysal","Mia","user","faysal@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+				 
+insert into users(fistname,lastname,roles,email,phone,dirth,district,thana,address,password)
+            values("Sadik","Snr","user","sadik@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+			
+			
+
+			
+create table products(
+   productcode int NOT NULL,
+   productname VARCHAR(50) ,  
+   color VARCHAR(25) ,
+   size varchar(5),
+   quantity int,
+   unitprice int,
+   cash_memo varchar(15),
+   company varchar(50),
+   date_time datetime default now(),
+   description varchar(200),
+   PRIMARY KEY (productcode)
+);
+
+
+insert into products(productcode,productname,color,size,quantity,unitprice,cash_memo,company,description)
+            values(001,"Shart","red","sm",50,220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,color,size,quantity,unitprice,cash_memo,company,description)
+            values(002,"Shart","pink","l",50,220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,color,size,quantity,unitprice,cash_memo,company,description)
+            values(003,"Shart","green","m",50,220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,unitprice,cash_memo,company,description)
+            values(004,"Burger","sm",50,220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,unitprice,cash_memo,company,description)
+            values(005,"Burger","l",50,220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,size,quantity,unitprice,cash_memo,company,description)
+            values(006,"Burger","m",50,220,"95","SS Cong ltd", "products are available");
+
+
+select * from products where productcode="001";
+
+
+
+create table wishlist(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productname VARCHAR(50) ,
+   productcode int,
+   color VARCHAR(25) ,
+   size varchar(5),
+   unitprice int,
+   description varchar(200),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (productcode) REFERENCES products(productcode)
+);
+
+
+
+
+
+create table orders(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productname VARCHAR(50) ,
+   productcode int,
+   color VARCHAR(25) ,
+   size varchar(5),
+   unitprice int,
+   subtotal int,
+   vat int,
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (productcode) REFERENCES products(productcode)
+);
+
+
+
+==============================Project SSM Shop===============================30/7/20
+table name
+------------------
+product,
+order,
+wishlist,
+users
+
+create database ssmshop;
+use ssmshop;
+
+
+
+
+
+drop table cart;
+drop table wishlist;
+drop table orders;
+drop table users;
+drop table products;
+
+create table users
+         (id INT NOT NULL AUTO_INCREMENT,
+		 fistname varchar(25),
+		 lastname varchar(25),
+		 roles  varchar(15),
+		 email varchar(25),
+		 phone varchar(15),
+		 birth date,
+		 district varchar(15),
+		 thana varchar(15),
+		 address varchar(150),
+		 password varchar(30),
+		  PRIMARY KEY (id)
+		 );
+		 
+insert into users(fistname,lastname,roles,email,phone,birth,district,thana,address,password)
+            values("Saiful","Alam","admin","gmsaifulalam93@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+		 
+insert into users(fistname,lastname,roles,email,phone,birth,district,thana,address,password)
+            values("Fysal","Mia","user","faysal@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+				 
+insert into users(fistname,lastname,roles,email,phone,birth,district,thana,address,password)
+            values("Sadik","Snr","user","sadik@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+			
+			
+
+			
+create table products(
+   productcode varchar(20) NOT NULL,
+   productname VARCHAR(50) ,  
+   color VARCHAR(25) ,
+   size varchar(5),
+   quantity int,
+   type varchar(7),
+   unitprice DOUBLE(20,2),
+   cash_memo varchar(15),
+   company varchar(50),
+   date_time datetime default now(),
+   description varchar(200),
+   PRIMARY KEY (productcode)
+);
+
+
+
+
+
+create table wishlist(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productcode varchar(25),
+   color VARCHAR(25) ,
+   type varchar(7),
+   size varchar(5),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (productcode) REFERENCES products(productcode)
+);
+
+
+
+
+
+create table cart(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productcode varchar(25),
+   color VARCHAR(25) ,
+   type varchar(7),
+   size varchar(5),
+   unitprice DOUBLE(20,2),
+   subtotal DOUBLE(20,2),
+   vat DOUBLE(20,2),
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (productcode) REFERENCES products(productcode)
+);
+
+
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s001","bed1","red","sm",50,"fashion",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s002","chair1","pink","l",50,"fashion",220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s003","mobail1","green","m",50,"fashion",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s004","cake1","sm",50,"food",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s005","chicken1","l",50,"food",220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("s006","fishfri1","m",50,"food",220,"95","SS Cong ltd", "products are available");
+
+
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m003","ipadair1","red","sm",50,"fashion",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m004","sofa1","pink","l",50,"fashion",220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,color,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m002","chair1","green","m",50,"fashion",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m001","mumlet1","sm",50,"food",220,"95","SS Cong ltd", "products are available");
+
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m005","salad1","l",50,"food",220,"95","SS Cong ltd", "products are available");
+			
+
+insert into products(productcode,productname,size,quantity,type,unitprice,cash_memo,company,description)
+            values("m006","cake1","m",50,"food",220,"95","SS Cong ltd", "products are available");
+
+
+
+select * from products where productcode="s001";
+
+
+
+
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"m003","red","food","sm",550,5444,50);
+				  
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"s001","red","food","sm",550,5444,50);
+				  
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"s002","red","food","sm",550,5444,50);
+				  
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"s004","red","food","sm",550,5444,50);
+				  
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"s006","red","food","sm",550,5444,50);
+				  
+insert into cart (coustomerId,productcode,color,type,size,unitprice,subtotal,vat)
+                  values(1,"m005","red","food","sm",550,5444,50);
+
+
+
+
+insert into wishlist(coustomerId,productcode,color,size)
+            values(2,"s002","red","xl");
+
+insert into wishlist(coustomerId,productcode,color,size)
+            values(1,"s004","green","l");
+
+insert into wishlist(coustomerId,productcode,color,size)
+            values(3,"s005","pink","sm");
+
+insert into wishlist(coustomerId,productcode,color,size)
+            values(1,"s003","yelo","m");
+
+
+
+
+
+create table orders(
+   id INT NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   productcode varchar(25),
+   color VARCHAR(25) ,
+   size varchar(5),
+   type varchar(7),
+   unitprice DOUBLE(20,2),
+   subtotal DOUBLE(20,2),
+   vat DOUBLE(20,2),
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (productcode) REFERENCES products(productcode)
+);
+
+
+insert into orders(coustomerId,productcode,color,size,type,unitprice,subtotal,vat)  
+            values(1,"s002","red","sm","fashion",50.0000,220.0000,5.0000);
+		
+insert into orders(coustomerId,productcode,size,type,unitprice,subtotal,vat)
+            values(2,"s005","sm","food",50,220,5);
+		
+		
+		
+insert into orders(coustomerId,productcode,color,size,type,unitprice,subtotal,vat)
+            values(3,"s001","red","sm","cosmetics",50,220,5);
+		
+select * from  users;
+select * from  products;
+select * from  wishlist;
+select * from  orders;
+
+select productcode,productname,color,size,quantity,
+       unitprice,cash_memo,company,description ,
+	   date(date_time) as date,
+	   time(date_time) time  from products;
+
+select productcode,productname,size,quantity,
+       unitprice,cash_memo,company,description ,type,
+	   date(date_time) as date,
+	   time(date_time) time  from products where type="food";
+
+
+select productcode,productname,color,size,quantity,
+       unitprice,cash_memo,company,description ,
+	   date(date_time) as date,
+	   time(date_time) time  from products where productcode="s003";
+
+
+
+
+
+==============================Project SSM Shop===============================06/8/20
+table name
+------------------
+product,
+order,
+wishlist,
+users
+
+create database ssmshop;
+use ssmshop;
+
+
+
+
+drop table feedback;
+drop table emp;
+drop table cart;
+drop table wishlist;
+drop table orders;
+drop table users;
+drop table products;
+
+create table users
+         (
+		 id int NOT NULL AUTO_INCREMENT,
+		 firstname varchar(25) DEFAULT NULL,
+		 lastname varchar(25) DEFAULT NULL,
+		 roles  varchar(15) DEFAULT "user",
+		 email varchar(25)  NOT NULL,
+		 phone varchar(15) DEFAULT NULL,
+		 birth varchar(15) DEFAULT NULL,
+		 district varchar(15) DEFAULT NULL,
+		 thana varchar(15) DEFAULT NULL,
+		 address varchar(150) DEFAULT NULL,
+		 password varchar(30) NOT NULL,
+		 PRIMARY KEY (id),
+		 UNIQUE KEY email (email)
+		 );
+		 
+insert into users(firstname,lastname,roles,email,phone,birth,district,thana,address,password)
+            values("Saiful","Alam","admin","gmsaifulalam93@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+		 
+insert into users(firstname,lastname,roles,email,phone,birth,district,thana,address,password)
+            values("Fysal","Mia","admin","faysal@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345");
+				 
+insert into users(firstname,lastname,email,phone,birth,district,thana,address,password)
+            values("Sadik","Snr","sadik@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+			
+insert into users(firstname,lastname,email,phone,birth,district,thana,address,password)
+            values("Jafrul","Ahsan","jafrul@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+						
+				 
+insert into users(firstname,lastname,email,phone,birth,district,thana,address,password)
+            values("Hasasn","Mia","hasan@gmail","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+			
+insert into users(firstname,lastname,email,phone,birth,district,thana,address,password)
+            values("KIanon","Kana","kanon@gmail.com","01712922516","01/12/1995","Dhaka","Adabor","11/9,Shekherteck,Adabor","12345"); 
+						
+
+			 
+ 
+			 
+			 
+create table products(
+   id int NOT NULL AUTO_INCREMENT,
+   product_id varchar(20) NOT NULL,
+   product_name VARCHAR(70) DEFAULT NULL,
+   image   VARCHAR(50)DEFAULT NULL,
+   category varchar(50) DEFAULT NULL,
+   old_price double(10,2) DEFAULT NULL,
+   new_price double(10,2) DEFAULT NULL,
+   cost_price double(10,2) DEFAULT NULL,
+   quantity DOUBLE(10,2) DEFAULT NULL,
+   cash_memo varchar(15)DEFAULT NULL,
+   company varchar(50)DEFAULT NULL,
+   date_time datetime default now(),
+   description varchar(500)DEFAULT NULL,
+   stock_ditails varchar(200)DEFAULT NULL,
+   PRIMARY KEY (id),
+   UNIQUE KEY product_id (product_id)
+);
+
+select id,product_id,product_name,image,old_price,category,
+new_price,quantity,company,description ,cost_price,stock_ditails,cash_memo,
+	   date(date_time) as date,
+	   time(date_time) time   from products where category="food";
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a08","Comfortable Bed_Side Sofa","sofa1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a09","Comfortable Bed_Side Sofa","chair1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a01","Beautiful Folding Bed","bed1","furniture",45000,43500,30000,55,"m740","Alu Vaja Pvt.Ltd","Are you planning to update your bedroom decor,
+			or maybe even start a renovation from the ground up? This post is all about inspiration! We've collected a list of 40 bedrooms that span a huge range of
+			styles from contemporary to classic, eclectic to minimalist, and everything in between – a little something for everybody. Whether you're looking for
+			creative accent wall ideas, different bed frame designs, or just want to check out some neat color palettes or fresh decor motifs, you're sure to find
+			something for your sketchbook in one of these breathtaking retreats.","Red:20,Black:20,white:15");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a02","Christopher Knight Fayola Fabric Arm Chair","chair1","furniture",25000,22000,15000,70,"m740","Potol Vaja Pvt.Ltd","Whether you’re an
+			organised sort of a person that prefers to lay out the next days outfit on a chair by the bed, or the disorganised type that leaves todays jeans
+			strewn across it, you appreciate that handy chair. You might like to have a cosy bedroom lounge chair or rocking chair where you can kick back 
+			and relax with a good book or amble around the internet on a laptop before rolling into bed, or a stylish armchair or accent chair where you can 
+			enjoy a cup of fresh coffee at dawn. Whoever you are, whatever you like to do, a beautiful chair makes a great addition to a bedroom. Here’s a 
+			selection that covers just about every base and taste.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a04","Testy Soft Cake","cake1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a05","Testy Chicken-Chap","chicken1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a06","Testy Hilsha Fish Fry","fishfri1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a010","Testy Mumlet Fry","mumlet1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a011","Testy Salad Mix","salad1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a012","Full Cream Testy Cake","cake1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a013","Gorgious Golden Ring","gold","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a014","Gorgious Golden Chain With Locket","festive-jewelry","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a015","Gorgious Golden Ring","gold","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a016","Gorgious Golden Chain With Locket","festive-jewelry","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a017","Gorgious Golden Ring","gold","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a018","Gorgious Golden Chain With Locket","festive-jewelry","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a019","Gorgious Golden Ring","gold","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a020","Gorgious Golden Chain With Locket","festive-jewelry","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a021","Gorgious Golden Ring","gold","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a022","Gorgious Golden Chain With Locket","festive-jewelry","jewel",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a023","Testy Chicken-Chap","chicken1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a024","Testy Hilsha Fish Fry","fishfri1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a025","Testy Mumlet Fry","mumlet1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a026","Testy Salad Mix","salad1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a027","Full Cream Testy Cake","cake1","food",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a07","Huawei MatePad 10.8","ipadair1","electricity",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a03","Samsung G Tab S6 Lite","mobail1","electricity",35000,34500,30000,100,"m740","Samsung Compani Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","Golden:30,Black:30,white:40");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a028","Huawei MatePad 10.8","tv1","electricity",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a029","Samsung G Tab S6 Lite","mobile3","electricity",35000,34500,30000,100,"m740","Samsung Compani Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","Golden:30,Black:30,white:40");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a030","Huawei MatePad 10.8","earphon1","electricity",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a031","Samsung G Tab S6 Lite","earphone2","electricity",35000,34500,30000,100,"m740","Samsung Compani Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","Golden:30,Black:30,white:40");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a032","Huawei MatePad 10.8","ipadair1","electricity",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a033","Samsung G Tab S6 Lite","mobail1","electricity",35000,34500,30000,100,"m740","Samsung Compani Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","Golden:30,Black:30,white:40");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a034","Huawei MatePad 10.8","ipadair1","electricity",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a035","Samsung G Tab S6 Lite","mobail1","electricity",35000,34500,30000,100,"m740","Samsung Compani Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","Golden:30,Black:30,white:40");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a036","Comfortable Bed_Side Sofa","sofa1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a037","Comfortable Bed_Side Sofa","chair1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a038","Beautiful Folding Bed","bed1","furniture",45000,43500,30000,55,"m740","Alu Vaja Pvt.Ltd","Are you planning to update your bedroom decor,
+			or maybe even start a renovation from the ground up? This post is all about inspiration! We've collected a list of 40 bedrooms that span a huge range of
+			styles from contemporary to classic, eclectic to minimalist, and everything in between – a little something for everybody. Whether you're looking for
+			creative accent wall ideas, different bed frame designs, or just want to check out some neat color palettes or fresh decor motifs, you're sure to find
+			something for your sketchbook in one of these breathtaking retreats.","Red:20,Black:20,white:15");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a039","Christopher Knight Fayola Fabric Arm Chair","chair1","furniture",25000,22000,15000,70,"m740","Potol Vaja Pvt.Ltd","Whether you’re an
+			organised sort of a person that prefers to lay out the next days outfit on a chair by the bed, or the disorganised type that leaves todays jeans
+			strewn across it, you appreciate that handy chair. You might like to have a cosy bedroom lounge chair or rocking chair where you can kick back 
+			and relax with a good book or amble around the internet on a laptop before rolling into bed, or a stylish armchair or accent chair where you can 
+			enjoy a cup of fresh coffee at dawn. Whoever you are, whatever you like to do, a beautiful chair makes a great addition to a bedroom. Here’s a 
+			selection that covers just about every base and taste.","green:30,Black:20,white:20");
+
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a040","Comfortable Bed_Side Sofa","sofa1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a041","Comfortable Bed_Side Sofa","chair1","furniture",120,120,100,100,"m740","Shoug Bangla Pvt.Ltd","Samsung 
+			Galaxy Tab S6 Lite price in Bangladesh is 35,000 BDT. This Mobile Phone has 10.4 inches IPS LCD Display with 4GB RAM and 
+			Internal Storage 64GB, 128GB including 8MP Primary and 5MP Selfie Camera. This Samsung G Tab S6 Lite is powered 7040 
+			mAh Non-removable Li-Po Battery.","green:30,Black:20,white:20");
+
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a042","Beautiful Folding Bed","bed1","furniture",45000,43500,30000,55,"m740","Alu Vaja Pvt.Ltd","Are you planning to update your bedroom decor,
+			or maybe even start a renovation from the ground up? This post is all about inspiration! We've collected a list of 40 bedrooms that span a huge range of
+			styles from contemporary to classic, eclectic to minimalist, and everything in between – a little something for everybody. Whether you're looking for
+			creative accent wall ideas, different bed frame designs, or just want to check out some neat color palettes or fresh decor motifs, you're sure to find
+			something for your sketchbook in one of these breathtaking retreats.","Red:20,Black:20,white:15");
+
+
+insert into products(product_id,product_name,image,category,old_price,new_price,cost_price,quantity,cash_memo,company,description,stock_ditails)
+            values("a043","Christopher Knight Fayola Fabric Arm Chair","chair1","furniture",25000,22000,15000,70,"m740","Potol Vaja Pvt.Ltd","Whether you’re an
+			organised sort of a person that prefers to lay out the next days outfit on a chair by the bed, or the disorganised type that leaves todays jeans
+			strewn across it, you appreciate that handy chair. You might like to have a cosy bedroom lounge chair or rocking chair where you can kick back 
+			and relax with a good book or amble around the internet on a laptop before rolling into bed, or a stylish armchair or accent chair where you can 
+			enjoy a cup of fresh coffee at dawn. Whoever you are, whatever you like to do, a beautiful chair makes a great addition to a bedroom. Here’s a 
+			selection that covers just about every base and taste.","green:30,Black:20,white:20");
+
+
+
+
+
+
+
+drop table cart;
+
+create table cart(
+   id int NOT NULL AUTO_INCREMENT,
+   coustomerId int,
+   product_id int,
+   product_name VARCHAR(25) DEFAULT NULL,
+   image VARCHAR(25) DEFAULT NULL,
+   color VARCHAR(25) DEFAULT NULL,
+   category varchar(7) DEFAULT NULL,
+   size varchar(5)DEFAULT "ALL",
+   new_price DOUBLE(20,2) DEFAULT NULL,
+   company VARCHAR(25) DEFAULT NULL,
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
+
+
+
+
+
+
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(1,2,"Beautiful Folding Bed","gold_cart","red","food","sm",550);
+
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(2,1,"Beautiful Folding Bed","gold_cart","red","furniture","sm",550);
+				  
+				  
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(3,3,"Beautiful Folding Bed","gold_cart","red","electricity","m",550);
+				  
+				  
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(4,4,"Beautiful Folding Bed","gold_cart","red","jewel","l",550);
+				  
+				  
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(5,6,"Beautiful Folding Bed","gold_cart","red","food","xl",550);
+				  
+				  
+insert into cart (coustomerId,product_id,product_name,image,color,category,size,new_price)
+                  values(6,2,"Beautiful Folding Bed","gold_cart","red","furniture","sm",550);
+				  
+
+
+
+create table wishlist(
+   id int NOT NULL AUTO_INCREMENT,
+   customer_id int(25),
+   product_id int(20),
+   product_name VARCHAR(50)DEFAULT NULL,
+   company varchar(50)DEFAULT NULL,
+   new_price double(10,2) DEFAULT NULL,
+   PRIMARY KEY (id),
+   FOREIGN KEY (customer_id) REFERENCES users(id),
+   FOREIGN KEY (product_id) REFERENCES products(id)
+);
+
+
+
+
+
+insert into wishlist(customer_id,product_id,product_name,company,new_price)
+            values(2,3,"Beautiful Folding Bed","Alu Pvt.Ltd",45000);
+
+insert into wishlist(customer_id,product_id,product_name,company,new_price)
+            values(1,2,"Samsung G Tab S6 Lite","Alu Pvt.Ltd",5230);
+
+insert into wishlist(customer_id,product_id,product_name,company,new_price)
+            values(3,4,"Testy Soft Cake","Ching Chang Pvt.Ltd",700);
+
+insert into wishlist(customer_id,product_id,product_name,company,new_price)
+            values(5,2,"Christopher Knight Fayola Fabric Arm Chair","Arong Pvt.Ltd",5200);
+
+insert into wishlist(customer_id,product_id,product_name,company,new_price)
+            values(4,5,"Testy Chicken-Chap","Arong Pvt.Ltd",5200);
+
+
+drop table   orderditais;
+
+drop table orders;
+ 
+create table orders(
+   id  int NOT NULL AUTO_INCREMENT,
+   order_id int NOT NULL,
+   coustomerId int(25) NOT NULL,
+   shipment DOUBLE(20,2) DEFAULT NULL,
+   subtotal DOUBLE(20,2) DEFAULT NULL,
+   vat DOUBLE(20,2) DEFAULT NULL,
+   total DOUBLE(20,2) DEFAULT NULL,
+   payment_method varchar(50) DEFAULT NULL,
+   district varchar(25)  DEFAULT NULL,
+   address varchar(255)  DEFAULT NULL,
+   thana varchar(25)  DEFAULT NULL,
+   
+   postcode varchar(10)  DEFAULT NULL,
+   contact varchar(20) DEFAULT NULL,
+   status varchar(20) DEFAULT NULL,
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id)
+);
+
+
+
+insert into orders(coustomerId,shipment,subtotal,vat,total,district,address,thana,postcode,status) values
+(3,200,5000,50,5250,"Barishal","Mothbaria","Shekherteck","12586","Prosesing");
+
+   
+   
+create table orderditais(
+   id  int NOT NULL AUTO_INCREMENT,
+   order_id int NOT NULL,
+   coustomerId int NOT NULL,
+   product_id int NOT NULL,
+   product_name VARCHAR(25)  DEFAULT NULL,
+   image VARCHAR(25) DEFAULT NULL,
+   color VARCHAR(7) DEFAULT NULL,
+   size varchar(5) DEFAULT NULL,
+   category varchar(20) DEFAULT NULL,
+   quantity DOUBLE(10,2) DEFAULT NULL,
+   new_price DOUBLE(20,2) DEFAULT NULL,
+   company VARCHAR(25) DEFAULT NULL,
+   subtotal DOUBLE(20,2) DEFAULT NULL,
+   status varchar(20) DEFAULT NULL,
+   date_time datetime default now(),
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (product_id) REFERENCES products(id),
+   FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+
+
+insert into orderditais(order_id,coustomerId,product_id,product_name,image,color,size,category,quantity,new_price,company,subtotal,status)  
+            values(1,2,2,"Christopher Knight Fayola Fabric Arm Chair","aaaa","Red","m","furniture",5,50000,"Visa",250000,"Painding");
+
+
+create table feedback(
+   id  int NOT NULL AUTO_INCREMENT,
+   coustomerId int(25) NOT NULL,
+   product_id int(20) NOT NULL,
+   ditail varchar(270),
+   rating int,
+   PRIMARY KEY (id),
+   FOREIGN KEY (coustomerId) REFERENCES users(id),
+   FOREIGN KEY (product_id) REFERENCES products(id)
+   );
+
+
+drop table shipment;
+
+create table shipment(
+id  int NOT NULL AUTO_INCREMENT,
+  order_id int(25) DEFAULT NULL,
+  district varchar(25) NOT NULL,
+  ditail varchar(255) NOT NULL,
+  thana varchar(25) NOT NULL,
+  postcode varchar(10) NOT NULL,
+  PRIMARY KEY (id)
+
+);
+
+insert into shipment(district,thana,postcode,ditail) values("Dhaka","Mohammadpur","12345","11/9 shekdfjfhfj,ushdfki");
+
+
+create table emp(
+  id  int NOT NULL AUTO_INCREMENT,
+  name varchar(25),
+  nid varchar(25),
+  address varchar(25),
+  emp_id varchar(255) NOT NULL,
+  salary double(20,2) NOT NULL,
+  bonus double(20,2) DEFAULT NULL,
+  commision double(20,2) DEFAULT NULL,
+  absentfee double(20,2) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
+
+select * from  users;
+select * from  products;
+select * from  wishlist;
+select * from  orders;
+
+
+
+select id,product_id,product_name,image,category,old_price,new_price,quantity,company,description ,
+	   date(date_time) as date,time(date_time) time  from products;
+
+select id,product_id,product_name,image,old_price,new_price,quantity,company,description ,
+	   date(date_time) as date,
+	   time(date_time) time   from products where category="food";
+
+
+select product_id,product_name,image,category,old_price,new_price,quantity,company,description ,
+	   date(date_time) as date,
+	   time(date_time) time  from products where id=3;
+
+
+select id,coustomerId,product_id,product_name,image,
+color,company,category,size,new_price, date(date_time) as date,
+time(date_time) time from cart where coustomerId=2;
+
+select id,product_id,product_name,image,"
+                + "category,old_price,new_price,cost_price,quantity,"
+                + "cash_memo,company,description,stock_ditails"
+                + " from products where id="+id;
+
