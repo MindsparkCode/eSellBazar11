@@ -99,7 +99,6 @@ In this project I spend two months for complete.
 
 
 For more details:
-For contract--
 
 Linkedin-- https://www.linkedin.com/in/saiful93/ 
 Twitter-- https://twitter.com/gmsifulalam93 
